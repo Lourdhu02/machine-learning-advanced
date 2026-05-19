@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Notebooks
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Claude Code session state
+.claude/
+
+# pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
