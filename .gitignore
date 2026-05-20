@@ -28,6 +28,12 @@ dist/
 # Claude Code session state
 .claude/
 
+# Downloaded datasets (regenerate by re-running labs)
+**/data/MNIST/
+**/data/cifar*/
+**/data/*.gz
+**/data/*-idx*-ubyte
+
 # pytest / coverage
 .pytest_cache/
 .coverage
