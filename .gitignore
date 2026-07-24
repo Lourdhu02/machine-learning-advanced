@@ -1,40 +1,6 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-.venv/
-venv/
-ENV/
-env/
 .env
-
-# Distribution / packaging
-build/
-dist/
-*.egg-info/
-*.egg
-
-# Notebooks
-.ipynb_checkpoints/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-.DS_Store
-
-# Claude Code session state
-.claude/
-
-# Downloaded datasets (regenerate by re-running labs)
-**/data/MNIST/
-**/data/cifar*/
-**/data/*.gz
-**/data/*-idx*-ubyte
-
-# pytest / coverage
-.pytest_cache/
-.coverage
-htmlcov/
+*.log
+__pycache__/
+*.pyc
+models/
+data/
