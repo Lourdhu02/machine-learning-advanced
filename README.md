@@ -58,3 +58,6 @@ No essays. Diagrams and equations carry the weight.
 3. Move to module 01.
 
 Read. Derive. Plot. Code. Repeat.
+
+## Advanced ML
+Deep learning, NLP, CV
