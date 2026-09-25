@@ -1,5 +1,10 @@
 # Machine Learning, From Scratch
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![CI](https://github.com/Lourdhu02/machine-learning-advanced/actions/workflows/ci.yml/badge.svg)](https://github.com/Lourdhu02/machine-learning-advanced/actions/workflows/ci.yml)
+[![Cite with CFF](https://img.shields.io/badge/cite-CFF-green?style=flat-square)](CITATION.cff)
+
 A theory-first course. You learn ML by **deriving the math**, **drawing the diagrams**, and **coding the algorithm from scratch in NumPy** — not by gluing together scikit-learn.
 
 > Audience: comfortable Python, familiar with gradient descent and train/test, wants to *understand* every algorithm well enough to read papers and explain it on a whiteboard.
@@ -60,4 +65,18 @@ No essays. Diagrams and equations carry the weight.
 Read. Derive. Plot. Code. Repeat.
 
 ## Advanced ML
-Deep learning, NLP, CV
+Deep learning, NLP, CV — covered end-to-end by modules 7–15 and the four labs.
+
+---
+
+## Cite this course
+
+If you use this material, cite it with `CITATION.cff` or:
+
+> Lourdhu Raju. *Machine Learning, From Scratch: A theory-first course.* https://github.com/Lourdhu02/machine-learning-advanced, 2024. MIT License.
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE).

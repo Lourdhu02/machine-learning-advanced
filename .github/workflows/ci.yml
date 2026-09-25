@@ -1,0 +1,61 @@
+name: CI — run all from-scratch implementations
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy>=1.26 matplotlib>=3.8 scipy>=1.11 torch>=2.0
+
+      - name: Run every from_scratch.py
+        run: |
+          failed=0
+          for f in $(find course -name from_scratch.py); do
+            echo "=== $f ==="
+            if python "$f" 2>&1 | tail -5; then
+              echo "  OK"
+            else
+              echo "  FAILED: $f"
+              failed=1
+            fi
+          done
+          if [ $failed -ne 0 ]; then
+            echo "::error::Some from_scratch.py checks failed"
+            exit 1
+          fi
+
+      - name: Verify diagrams can regenerate
+        run: |
+          failed=0
+          for f in $(find course -name 'diagram_*.py'); do
+            echo "=== Regenerating $f ==="
+            if python "$f" 2>&1; then
+              echo "  OK"
+            else
+              echo "  FAILED: $f"
+              failed=1
+            fi
+          done
+          if [ $failed -ne 0 ]; then
+            echo "::error::Some diagram scripts failed to regenerate"
+            exit 1
+          fi

@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this course, please cite it."
+authors:
+  - family-names: Raju
+    given-names: Lourdhu
+    correspondence: true
+    email: b.lourdhuraju1234@gmail.com
+title: "Machine Learning, From Scratch: A theory-first course"
+version: "0.1.0"
+date-released: "2024-01-01"
+url: "https://github.com/Lourdhu02/machine-learning-advanced"
+abstract: >
+  A theory-first machine learning course: derive the math, draw the diagram,
+  implement the algorithm from scratch in NumPy — not by gluing together
+  scikit-learn. Covers linear models, trees and ensembles, Bayes and kNN,
+  clustering, dimensionality reduction, MLPs, CNNs, RNNs/LSTMs, attention,
+  and transformers, with hands-on labs.
+keywords:
+  - machine learning
+  - from scratch
+  - NumPy
+  - pedagogy
+  - linear regression
+  - neural networks
+  - transformers
+license: MIT
+commit: "HEAD"

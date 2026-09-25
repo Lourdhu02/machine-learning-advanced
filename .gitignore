@@ -1,6 +1,63 @@
+# Local / environment
 .env
-*.log
+.env.*
+!.env.example
+
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logging
+*.log
+logs/
+
+# Data and models (regenerate from scripts; do not commit large binaries)
 models/
 data/
+*.csv
+*.parquet
+*.pkl
+*.pt
+*.pth
+*.npy
+*.npz
+
+# Notebooks (optional — commit only if they add teaching value)
+*.ipynb
+
+# Matplotlib cache
+.matplotlib/
+
+# mypy
+.mypy_cache/
+.pyrightconfig.json
