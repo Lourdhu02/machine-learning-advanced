@@ -1,0 +1,6 @@
+# Publish the course as a GitHub Pages site
+
+theme: jekyll-theme-minimal
+title: Machine Learning, From Scratch
+description: A theory-first ML course — derive the math, draw the diagram, implement from scratch in NumPy.
+show_excerpts: false
