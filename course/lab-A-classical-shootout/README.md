@@ -65,8 +65,3 @@ Neural nets enter in module 10. The fair comparison "linear vs kernel vs ensembl
 
 - **No free lunch theorem** (Wolpert & Macready, 1997): averaged over all possible data distributions, every classifier has the same error rate. This means there is no universally best algorithm — the best choice depends on the structure of the specific problem. This is why the shootout matters.
 - **The comparison in this lab is on one dataset**; a fair comparison requires multiple datasets or a nested cross-validation to avoid overfitting to the dataset choice.
-
-## 8. Advanced
-
-- **No free lunch theorem** (Wolpert & Macready, 1997): averaged over all possible data distributions, every classifier has the same error rate. This means there is no universally best algorithm — the best choice depends on the structure of the specific problem. This is why the shootout matters.
-- **The comparison in this lab is on one dataset**; a fair comparison requires multiple datasets or a nested cross-validation to avoid overfitting to the dataset choice.
