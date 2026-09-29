@@ -5,7 +5,7 @@
 [![CI](https://github.com/Lourdhu02/machine-learning-advanced/actions/workflows/ci.yml/badge.svg)](https://github.com/Lourdhu02/machine-learning-advanced/actions/workflows/ci.yml)
 [![Cite with CFF](https://img.shields.io/badge/cite-CFF-green?style=flat-square)](CITATION.cff)
 
-A theory-first course. You learn ML by **deriving the math**, **drawing the diagrams**, and **coding the algorithm from scratch in NumPy** — not by gluing together scikit-learn.
+A theory-first course. Learn ML by **deriving the math**, **drawing the diagrams**, and **coding the algorithm from scratch in NumPy** — not by gluing together scikit-learn.
 
 > Audience: comfortable Python, familiar with gradient descent and train/test, wants to *understand* every algorithm well enough to read papers and explain it on a whiteboard.
 
@@ -15,7 +15,7 @@ This is the theory counterpart to my [gen-ai](https://github.com/Lourdhu02/gen-a
 
 ## What you'll know by the end
 
-- Derive closed-form and iterative solutions for the core supervised algorithms (OLS, logistic regression, SVM) from first principles.
+- Derive closed-form and iterative solutions for core supervised algorithms (OLS, logistic regression, SVM) from first principles.
 - Read a paper's math section without skipping — you can follow the derivations.
 - Explain any algorithm on a whiteboard: what it optimizes, why the geometry looks the way it does, and where it breaks.
 - Build neural nets, CNNs, RNNs, attention, and Transformer blocks in NumPy — and know exactly what each line does.
@@ -37,7 +37,7 @@ This is the theory counterpart to my [gen-ai](https://github.com/Lourdhu02/gen-a
 
 ---
 
-## How this course works
+## How to use this course
 
 Every module follows the same seven-section layout:
 
@@ -51,9 +51,7 @@ Every module follows the same seven-section layout:
 
 No essays. Diagrams and equations carry the weight.
 
----
-
-## How to use this course
+Practical workflow:
 
 1. Finish [`SETUP.md`](./SETUP.md).
 2. Walk through [`course/00-math-foundations/README.md`](./course/00-math-foundations/) — the math primer.
