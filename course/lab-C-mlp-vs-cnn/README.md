@@ -69,3 +69,9 @@ This is the same lesson that explains why graph neural networks beat MLPs on mol
 - **CNNs' inductive bias for vision**: translation equivariance + locality (receptive fields) means CNNs need fewer parameters and less data to learn vision tasks than MLPs. This is the central reason CNNs dominate vision.
 - **MLPs on images**: an MLP treats the image as a flat vector, ignoring spatial structure. It can learn vision tasks (and does, given enough data and parameters), but it's less sample-efficient and less parameter-efficient than a CNN for the same task.
 - **The compute budget comparison in this lab is important**: with the same number of parameters and epochs, the CNN should outperform the MLP on vision tasks because of the inductive bias. If it doesn't, the CNN implementation may have a bug.
+
+## 8. Advanced
+
+- **CNNs' inductive bias for vision**: translation equivariance + locality (receptive fields) means CNNs need fewer parameters and less data to learn vision tasks than MLPs. This is the central reason CNNs dominate vision.
+- **MLPs on images**: an MLP treats the image as a flat vector, ignoring spatial structure. It can learn vision tasks (and does, given enough data and parameters), but it's less sample-efficient and less parameter-efficient than a CNN for the same task.
+- **The compute budget comparison in this lab is important**: with the same number of parameters and epochs, the CNN should outperform the MLP on vision tasks because of the inductive bias. If it doesn't, the CNN implementation may have a bug.

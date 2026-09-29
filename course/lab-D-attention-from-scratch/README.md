@@ -93,3 +93,9 @@ The [gen-ai](https://github.com/Lourdhu02/gen-ai) course picks up where this one
 - **The NumPy attention vs PyTorch attention comparison**: discrepancies between the two can come from (1) different default numerical precision, (2) different masking implementation, (3) different treatment of the scaling factor. The numerical gradient check from module 10 is the template for verifying correctness.
 - **FlashAttention (Dao et al., 2022)**: an I/O-aware exact attention algorithm that speeds up attention by orders of magnitude on GPU by tiling and recomputation, without changing the mathematical result. This is the production standard for attention on long sequences.
 - **The Transformer's O(n²) attention is the fundamental bottleneck**. All 'efficient Transformer' variants (linear attention, sparse attention, performer, etc.) approximate or restructure the attention computation to reduce the n² cost, usually at some cost in quality.
+
+## 8. Advanced
+
+- **The NumPy attention vs PyTorch attention comparison**: discrepancies between the two can come from (1) different default numerical precision, (2) different masking implementation, (3) different treatment of the scaling factor. The numerical gradient check from module 10 is the template for verifying correctness.
+- **FlashAttention (Dao et al., 2022)**: an I/O-aware exact attention algorithm that speeds up attention by orders of magnitude on GPU by tiling and recomputation, without changing the mathematical result. This is the production standard for attention on long sequences.
+- **The Transformer's O(n²) attention is the fundamental bottleneck**. All 'efficient Transformer' variants (linear attention, sparse attention, performer, etc.) approximate or restructure the attention computation to reduce the n² cost, usually at some cost in quality.

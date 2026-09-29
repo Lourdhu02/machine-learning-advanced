@@ -76,3 +76,9 @@ The Distill.pub article *How to Use t-SNE Effectively* (Wattenberg et al., 2016)
 - **t-SNE is a stochastic algorithm** (random initialization, the perplexity-based bandwidth is stochastic). Multiple runs can give different embeddings. This is why you should run it several times and pick a representative one.
 - **PCA preserves global structure** (large distances) because it's a linear projection that maximizes variance. t-SNE preserves local structure (small distances) because its objective focuses on nearby points. UMAP attempts to preserve both, with a hyperparameter (n_neighbors) controlling the local/global tradeoff.
 - **The trustworthiness and continuity metrics** (Venna & Kaski, 2001) quantify how well a 2D embedding preserves the local neighborhood structure of the high-D data. These are better evaluation metrics than visual inspection.
+
+## 8. Advanced
+
+- **t-SNE is a stochastic algorithm** (random initialization, the perplexity-based bandwidth is stochastic). Multiple runs can give different embeddings. This is why you should run it several times and pick a representative one.
+- **PCA preserves global structure** (large distances) because it's a linear projection that maximizes variance. t-SNE preserves local structure (small distances) because its objective focuses on nearby points. UMAP attempts to preserve both, with a hyperparameter (n_neighbors) controlling the local/global tradeoff.
+- **The trustworthiness and continuity metrics** (Venna & Kaski, 2001) quantify how well a 2D embedding preserves the local neighborhood structure of the high-D data. These are better evaluation metrics than visual inspection.
