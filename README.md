@@ -122,6 +122,123 @@ The attention matrix over a sequence — which tokens attend to which. Module 14
 
 ---
 
+## Markdown Badges
+
+Badges communicate repo metadata at a glance — language, status, license, version, topic. Here's a reference collection you can drop into any README.
+
+### Weather & status badges
+
+Daily weather, version, or status badges update automatically.
+
+```
+![Weather - Seattle](https://img.shields.io/weather.svg?label=Seattle&location=Seattle%2CWA)
+![Weather - London](https://img.shields.io/weather.svg?label=London&location=London%2CUK&color=blue)
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![Status](https://img.shields.io/badge/status-active-success)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+```
+
+![Weather - Seattle](https://img.shields.io/weather.svg?label=Seattle&location=Seattle%2CWA)
+![Weather - London](https://img.shields.io/weather.svg?label=London&location=London%2CUK&color=blue)
+
+### Shields.io — the standard
+
+Most badges on GitHub use [shields.io](https://shields.io). The pattern:
+
+```
+![Label](https://img.shields.io/badge/label-value-color)
+![Label](https://img.shields.io/github/REPO_PATH)
+![Label](https://img.shields.io/ service-name / params)
+```
+
+Common ones for a course repo:
+
+```
+![Python](https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-yellow)
+![GitHub stars](https://img.shields.io/github/stars/Lourdhu02/machine-learning-advanced?style=flat)
+![GitHub forks](https://img.shields.io/github/forks/Lourdhu02/machine-learning-advanced?style=flat)
+![GitHub issues](https://img.shields.io/github/issues/Lourdhu02/machine-learning-advanced)
+![GitHub PRs](https://img.shields.io/github/issues-pr/Lourdhu02/machine-learning-advanced)
+![Last commit](https://img.shields.io/github/lastcommit/Lourdhu02/machine-learning-advanced/main)
+![CI](https://img.shields.io/github/actions/workflow/status/Lourdhu02/machine-learning-advanced/ci.yml?label=CI)
+![Contributor](https://img.shields.io/github/contributors/Lourdhu02/machine-learning-advanced)
+```
+
+![Python](https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-yellow)
+![GitHub stars](https://img.shields.io/github/stars/Lourdhu02/machine-learning-advanced?style=flat)
+![GitHub forks](https://img.shields.io/github/forks/Lourdhu02/machine-learning-advanced?style=flat)
+![GitHub issues](https://img.shields.io/github/issues/Lourdhu02/machine-learning-advanced)
+![GitHub PRs](https://img.shields.io/github/issues-pr/Lourdhu02/machine-learning-advanced)
+![Last commit](https://img.shields.io/github/lastcommit/Lourdhu02/machine-learning-advanced/main)
+![CI](https://img.shields.io/github/actions/workflow/status/Lourdhu02/machine-learning-advanced/ci.yml?label=CI)
+![Contributor](https://img.shields.io/github/contributors/Lourdhu02/machine-learning-advanced)
+
+Social & package badges:
+
+```
+![Twitter Follow](https://img.shields.io/twitter/follow/lourdhu02?style=social)
+![YouTube Channel](https://img.shields.io/youtube/channel/subscribers/UC0sgRgm1ldU4wDDr8g6mJlA?logo=youtube&label=channel)
+![Hits](https://img.shields.io/badge/dynamic/json?label=visits&url=https%3A%2F%2Fapi.github.com%2Frepos%2FLourdhu02%2Fmachine-learning-advanced&query=%24.stargazers_count&color=brightgreen)
+```
+
+### Simple inline badges
+
+Lightweight badges without external services — just text in a span.
+
+```
+<span style="background:#28a745;color:white;padding:2px 8px;border-radius:3px;font-size:12px">stable</span>
+<span style="background:#ffc107;color:black;padding:2px 8px;border-radius:3px;font-size:12px">experimental</span>
+<span style="background:#dc3545;color:white;padding:2px 8px;border-radius:3px;font-size:12px">deprecated</span>
+<span style="background:#6f42c1;color:white;padding:2px 8px;border-radius:3px;font-size:12px">theory</span>
+<span style="background:#0366d6;color:white;padding:2px 8px;border-radius:3px;font-size:12px">lab</span>
+```
+
+<span style="background:#28a745;color:white;padding:2px 8px;border-radius:3px;font-size:12px">stable</span>
+<span style="background:#ffc107;color:black;padding:2px 8px;border-radius:3px;font-size:12px">experimental</span>
+<span style="background:#dc3545;color:white;padding:2px 8px;border-radius:3px;font-size:12px">deprecated</span>
+<span style="background:#6f42c1;color:white;padding:2px 8px;border-radius:3px;font-size:12px">theory</span>
+<span style="background:#0366d6;color:white;padding:2px 8px;border-radius:3px;font-size:12px">lab</span>
+
+### Module tags (course-specific)
+
+Use these to tag each module in the roadmap table or on its own page.
+
+```
+![difficulty](https://img.shields.io/badge/difficulty-full-purple?style=flat)
+![difficulty](https://img.shields.io/badge/difficulty-mixed-orange?style=flat)
+![difficulty](https://img.shields.io/badge/difficulty-light-green?style=flat)
+![module](https://img.shields.io/badge/module-01-lightblue?style=flat)
+![status](https://img.shields.io/badge/status-complete-brightgreen?style=flat)
+```
+
+![difficulty](https://img.shields.io/badge/difficulty-full-purple?style=flat)
+![difficulty](https://img.shields.io/badge/difficulty-mixed-orange?style=flat)
+![difficulty](https://img.shields.io/badge/difficulty-light-green?style=flat)
+![module](https://img.shields.io/badge/module-01-lightblue?style=flat)
+![status](https://img.shields.io/badge/status-complete-brightgreen?style=flat)
+
+### License badges
+
+The license badge is already in the header above. Other license formats:
+
+```
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
+![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-red.svg)
+![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey)
+```
+
+### Tips
+
+- **Keep it honest.** Don't badge "stable" if the module isn't done.
+- **Use `style=flat` for subtler badges** that don't compete with content.
+- **Too many badges looks noisy.** One row of 3–6 relevant badges is plenty.
+- **Label is what shows on the left, value is on the right.** Make both short.
+
+---
+
 ## Cite this course
 
 If you use this material, cite it with `CITATION.cff` or:
