@@ -221,9 +221,27 @@ python from_scratch.py
 
 ## 7. References
 
+### Papers
+- **Breiman, L. (1996).** *Bagging predictors.* Machine Learning, 24(2), 123–140. [https://doi.org/10.1007/BF00058655] [The bagging paper.]
+- **Breiman, L. (2001).** *Random forests.* Machine Learning, 45(1), 5–32. [https://doi.org/10.1023/A:1010950713441] [The Random Forest paper.]
+- **Freund, Y. & Schapire, R.E. (1997).** *A decision-theoretic generalization of on-line learning and an application to boosting.* Journal of Computer and System Sciences, 55(1), 119–139. [https://doi.org/10.1006/jcss.1997.1502] [The AdaBoost paper — originally presented at COLT 1995.]
+- **Friedman, J.H. (2001).** *Greedy function approximation: a gradient boosting machine.* Annals of Statistics, 29(5), 1189–1232. [https://doi.org/10.1214/aos/1013203451] [The GBM paper — the cleanest derivation in the boosting literature.]
+- **Hastie, T., Tibshirani, R. & Friedman, J. (2009).** *The Elements of Statistical Learning.* 2nd ed., Springer. §8 (boosting), §15 (bagging). [https://hastie.su.domains/EoSL/]
+- **Zhou, Z.-H. (2012).** *Ensemble Methods: Foundations and Algorithms.* Chapman and Hall/CRC. [https://www.routledge.com/Ensemble-Methods-Foundations-and-Algorithms/Zhou/p/book/9781439830001]
+
+### Further reading
 - Breiman — *Bagging Predictors* (1996) and *Random Forests* (2001). The Random Forest papers.
 - Freund & Schapire — *A Decision-Theoretic Generalization of On-line Learning and an Application to Boosting* (1997). The AdaBoost paper.
 - Friedman — *Greedy Function Approximation: A Gradient Boosting Machine* (2001). The GBM paper. The cleanest derivation in the boosting literature.
 - Chen & Guestrin — *XGBoost: A Scalable Tree Boosting System* (2016).
 - Ke et al. — *LightGBM: A Highly Efficient Gradient Boosting Decision Tree* (2017).
 - ESL §15 (bagging and RF), §10 (boosting). The Hastie-Tibshirani treatment.
+
+## 8. Advanced
+
+- **Bias-variance decomposition for ensembles**: bagging reduces variance (averaging independent high-variance estimators); boosting reduces bias (sequentially correcting errors). Random Forest does both: bagging + random feature subsets decorrelate the trees further.
+- **Out-of-bag (OOB) error**: in bagging, each tree is trained on ~63% of the data; the remaining 37% is the OOB set. The OOB error is an unbiased estimate of the generalization error, no validation set needed.
+- **AdaBoost's exponential loss**: AdaBoost minimizes Σ exp(-y_i f(x_i)) stage by stage. This is a convex surrogate for the 0-1 loss. The α_t update comes from this loss.
+- **Gradient Boosting generalizes AdaBoost**: any differentiable loss can be used (not just exponential). The 'gradient' in GBM refers to gradient descent in function space — each new tree fits the negative gradient of the loss w.r.t. the current prediction.
+- **XGBoost / LightGBM / CatBoost**: production GBM implementations with second-order Taylor approximation (XGBoost), histogram-based splits (LightGBM), and ordered boosting for categorical features (CatBoost). The core idea is the same as module 06's GBM.
+- **Stacking**: a meta-learner trained on the predictions of base learners. Different from boosting (sequential) and bagging (parallel). Can combine heterogeneous models.

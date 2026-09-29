@@ -193,6 +193,14 @@ In practice, in 2026, Transformers are the default for almost every sequence tas
 
 ## 7. References
 
+### Papers
+- **Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, Ł. & Polosukhin, I. (2017).** *Attention is all you need.* Advances in Neural Information Processing Systems 30 (NIPS 2017), 5998–6008. [https://arxiv.org/abs/1706.03762] [***THE primary reference*** — the Transformer paper. Introduced the full Transformer architecture: scaled dot-product attention, multi-head attention, positional encodings (sinusoidal + learned), encoder-decoder stacking, and the complete training recipe. Every line of this module's math traces back to this paper.]
+- **Devlin, J., Chang, M.-W., Lee, K. & Toutanova, K. (2019).** *BERT: pre-training of deep bidirectional transformers for language understanding.* Proceedings of NAACL 2019, 4171–4186. [https://doi.org/10.18653/v1/N19-1423] [BERT — encoder-only Transformer, masked language modeling, the transfer-learning paradigm for NLP.]
+- **Radford, A., Narasimhan, K., Salimans, T. & Sutskever, I. (2018).** *Improving language understanding by generative pre-training.* [https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf] [GPT-1 — decoder-only Transformer, the start of the generative pre-training lineage that led to GPT-2, GPT-3, and modern LLMs.]
+- **Goodfellow, I., Bengio, Y. & Courville, A. (2016).** *Deep Learning.* MIT Press. Chapter 11. [https://www.deeplearningbook.org/]
+- **Su, J., Lu, Y., Pan, S., Murtadha, A., Wen, B. & Liu, Y. (2021).** *RoFormer: enhanced transformer with rotary position embedding.* arXiv:2104.09864. [https://arxiv.org/abs/2104.09864] [RoPE — the rotary positional encoding behind LLaMA, Mistral, and most modern LLMs.]
+
+### Further reading
 - Vaswani et al. — *Attention Is All You Need* (2017). You should now be able to read every line of this paper.
 - Devlin et al. — *BERT* (2018).
 - Radford et al. — *GPT-1 / GPT-2* (2018 / 2019).
@@ -201,6 +209,18 @@ In practice, in 2026, Transformers are the default for almost every sequence tas
 - Kaplan et al. — *Scaling Laws for Neural Language Models* (2020).
 - Hoffmann et al. — *Training Compute-Optimal Large Language Models* (Chinchilla, 2022).
 - Karpathy — *Let's build GPT: from scratch, in code, spelled out* (YouTube). Do this before you graduate from the course.
+
+---
+
+
+## 8. Advanced
+
+- **The Transformer is a purely attention-based architecture** (no recurrence, no convolution in the core). The self-attention layers are the bottleneck for long sequences (O(n²)). This is the central tension in Transformer research: better performance via attention vs. the quadratic cost.
+- **Pre-norm vs post-norm**: in the original Transformer, LayerNorm is applied after the attention + FFN sublayer (post-norm). The pre-norm variant (LayerNorm before the sublayer) is more stable for deep networks and is used in most modern Transformers (e.g., BERT, GPT-2 onwards).
+- **BERT vs GPT**: BERT is bidirectional (full self-attention over the entire sequence, with masked language modeling as the pretraining objective). GPT is autoregressive (causal mask, next-token prediction). Both use the Transformer block; the difference is the attention mask and the pretraining objective.
+- **Rotary Position Embeddings (RoPE, Su et al. 2021) and ALiBi (Press et al. 2022)**: alternatives to the sinusoidal positional encoding. RoPE rotates the query and key vectors by a position-dependent angle, giving relative position information. ALiBi adds a position-dependent bias to the attention scores. Both improve length extrapolation.
+- **Scaling laws (Kaplan et al. 2020, Hoffmann et al. 2022 / Chinchilla)**: performance scales predictably with model size, dataset size, and compute. The Chinchilla result (Hoffmann et al.) suggests that for a given compute budget, the optimal is roughly equal scaling of parameters and tokens — earlier models (like GPT-3) were undertrained relative to their size.
+- **The GPT architecture**: decoder-only Transformer with causal masking, trained on next-token prediction. This is the architecture behind GPT-2, GPT-3, LLaMA, etc. The 'large language model' is a decoder-only Transformer trained on massive text corpora.
 
 ---
 

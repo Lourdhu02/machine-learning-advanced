@@ -76,3 +76,20 @@ You now understand every layer of a modern Transformer end to end:
 Read a paper. You'll find every equation in it lives somewhere in this list. That was the goal.
 
 The [gen-ai](https://github.com/Lourdhu02/gen-ai) course picks up where this one ends: building production systems on top of pretrained Transformers — RAG, agents, fine-tuning, multimodal, deployment.
+
+---
+
+## References
+
+### Papers
+- **Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, Ł. & Polosukhin, I. (2017).** *Attention is all you need.* NIPS 2017. [https://arxiv.org/abs/1706.03762] [***THE primary reference*** — the Transformer paper.]
+- **Bahdanau, D., Cho, K. & Bengio, Y. (2015).** *Neural machine translation by jointly learning to align and translate.* ICLR 2015. [https://arxiv.org/abs/1409.0473] [The additive attention paper.]
+- **Dao, T., Fu, D.Y., Ermon, S., Rudra, A. & Ré, C. (2022).** *FlashAttention: fast and memory-efficient exact attention with IO-awareness.* NeurIPS 2022. [https://arxiv.org/abs/2205.14135] [FlashAttention — the IO-aware kernel that made long context windows practical.]
+
+> Lab D builds on modules 14 (attention) and 15 (Transformers). See those modules' READMEs for the full paper lists.
+
+## 8. Advanced
+
+- **The NumPy attention vs PyTorch attention comparison**: discrepancies between the two can come from (1) different default numerical precision, (2) different masking implementation, (3) different treatment of the scaling factor. The numerical gradient check from module 10 is the template for verifying correctness.
+- **FlashAttention (Dao et al., 2022)**: an I/O-aware exact attention algorithm that speeds up attention by orders of magnitude on GPU by tiling and recomputation, without changing the mathematical result. This is the production standard for attention on long sequences.
+- **The Transformer's O(n²) attention is the fundamental bottleneck**. All 'efficient Transformer' variants (linear attention, sparse attention, performer, etc.) approximate or restructure the attention computation to reduce the n² cost, usually at some cost in quality.

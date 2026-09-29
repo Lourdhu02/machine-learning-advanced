@@ -135,7 +135,22 @@ python from_scratch.py
 
 ## 7. References
 
+### Papers
+- **Bishop, C. (2006).** *Pattern Recognition and Machine Learning.* Springer. §3.1. [https://www.springer.com/book/9780387310732]
+- **Hastie, T., Tibshirani, R. & Friedman, J. (2009).** *The Elements of Statistical Learning.* 2nd ed., Springer. §3.2. [https://hastie.su.domains/EoSL/]
+- **Gauss, C.F. (1809).** *Theoria Motus Corporum Coelestium.* sumptibus F. Schultis, Bonn. [The first derivation of least squares as an MLE under Gaussian noise — the origin of the normal equations.]
+- **Galton, F. (1886).** *Regression towards mediocrity in hereditary stature.* Journal of the Anthropological Institute of Great Britain and Ireland, 15, 246–263. [https://www.stat.ox.ac.uk/~nbriggs/History.pdf] [Coined the term "regression."]
+
+### Further reading
 - Bishop — *Pattern Recognition and Machine Learning*, §3.1. Probabilistic derivation.
 - Hastie, Tibshirani, Friedman — *Elements of Statistical Learning*, §3.2. Normal equation + geometry.
 - 3Blue1Brown — *Least Squares* essence (linear algebra series).
 - StatQuest — *Linear Regression, Clearly Explained* (YouTube). Cheap reinforcement.
+
+## 8. Advanced
+
+- **Gauss-Markov theorem**: among linear unbiased estimators, OLS has minimum variance. OLS is MVUE under Gaussian noise (MLE). Without Gaussian noise, OLS is still BLUE but no longer MLE.
+- **Biased-but-lower-variance tradeoff**: Ridge shrinks coefficients toward zero, increasing bias but reducing variance when features are collinear. This is the first instance of the bias-variance tradeoff that recurs through the course.
+- **Weighted least squares**: if observations have different noise variances, WLS with weight matrix W = diag(1/σ_i²) is the MLE. The closed-form becomes w* = (XᵀWX)⁻¹XᵀWy.
+- **Bayesian linear regression**: put a Gaussian prior on w, get a Gaussian posterior; the MAP estimate is Ridge regression with λ = σ²/τ². This connects module 03 to a probabilistic view.
+- **Prediction intervals vs confidence intervals**: the CI on the mean prediction ŷ is narrower than the PI on a new observation because the PI includes irreducible noise σ².

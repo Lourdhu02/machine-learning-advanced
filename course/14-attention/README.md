@@ -177,8 +177,23 @@ python from_scratch.py
 
 ## 7. References
 
+### Papers
+- **Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, Ł. & Polosukhin, I. (2017).** *Attention is all you need.* Advances in Neural Information Processing Systems 30 (NIPS 2017), 5998–6008. [https://arxiv.org/abs/1706.03762] [***THE primary reference*** — the Transformer paper. Introduced scaled dot-product attention, multi-head attention, positional encodings, and the full Transformer block.]
+- **Bahdanau, D., Cho, K. & Bengio, Y. (2015).** *Neural machine translation by jointly learning to align and translate.* Proceedings of ICLR 2015. [https://arxiv.org/abs/1409.0473] [The additive attention / alignment paper — attention's first appearance in an encoder-decoder seq2seq model.]
+- **Luong, M.-T., Pham, H. & Manning, C.D. (2015).** *Effective approaches to attention-based neural machine translation.* Proceedings of EMNLP 2015, 1412–1421. [https://aclanthology.org/D15-1166/] [Global vs local attention — generalized the attention mechanism beyond the additive form.]
+
+### Further reading
 - Vaswani et al. — *Attention Is All You Need* (2017). Read this paper in full — it's short, well-written, and you can now follow every line.
 - Bahdanau et al. — *Neural Machine Translation by Jointly Learning to Align and Translate* (2014). Attention's first appearance, in an encoder-decoder seq2seq model.
 - Alammar — *The Illustrated Transformer* (blog). The clearest visual walkthrough.
 - Karpathy — *Let's build GPT: from scratch, in code, spelled out* (YouTube). The best ~2 hours you can spend on this topic.
 - Dao et al. — *FlashAttention* (2022). Same math, IO-aware kernel that made 8k+ context windows practical.
+
+## 8. Advanced
+
+- **The scaled dot-product form**: softmax(QKᵀ/√d_k)V. The √d_k scaling prevents the dot products from growing large (when d_k is large, the dot product has variance d_k, pushing softmax into regions with near-zero gradients). Without scaling, attention saturates.
+- **Multi-head attention**: projecting Q, K, V into h different subspaces (with different learned projections) and running attention in each, then concatenating. This lets the model attend to different types of relationships simultaneously (e.g., syntactic vs semantic).
+- **Self-attention's computational complexity**: O(n² d) for sequence length n and dimension d. The n² term is the bottleneck for long sequences. This is why efficient attention variants exist (linear attention, performer, etc.) — but the full n² version is what makes the Transformer work so well.
+- **Attention as a kernel smoother**: the attention mechanism computes a weighted average of the values, where the weights are a kernel (softmax of QKᵀ) over the keys. This is exactly Nadaraya-Watson kernel regression, where the kernel is learned.
+- **Positional encodings**: since self-attention is permutation-invariant (it doesn't know the order of the sequence), positional information must be added explicitly. The sinusoidal encoding (Vaswani et al.) gives each position a unique vector; the Fourier structure lets the model generalize to unseen sequence lengths.
+- **Attention masking**: for autoregressive decoding (GPT-style), the attention over positions i > j must be masked (set to -∞) to prevent cheating. This is the 'causal mask'.

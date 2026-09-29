@@ -182,9 +182,27 @@ python from_scratch.py
 
 ## 7. References
 
+### Papers
+- **Hubel, D.H. & Wiesel, T.N. (1962).** *Receptive fields, binocular interaction, and functional architecture in the cat's visual cortex.* Journal of Physiology, 160(1), 106–154. [https://doi.org/10.1113/jphysiol.1962.sp006837] [The neuroscience paper that inspired CNNs — discovered hierarchical visual processing in the brain.]
+- **LeCun, Y., Bottou, L., Bengio, Y. & Haffner, P. (1998).** *Gradient-based learning applied to document recognition.* Proceedings of the IEEE, 86(11), 2278–2324. [https://doi.org/10.1109/5.726791] [LeNet-5 — the first successful CNN, applied to MNIST digit recognition.]
+- **Krizhevsky, A., Sutskever, I. & Hinton, G.E. (2012).** *ImageNet classification with deep convolutional neural networks.* Advances in Neural Information Processing Systems 25 (NIPS 2012), 1097–1105. [https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c843688beede52a3-Paper.pdf] [AlexNet — the paper that started the deep learning revolution in vision.]
+- **He, K., Zhang, X., Ren, S. & Sun, J. (2015).** *Deep residual learning for image recognition.* arXiv:1512.03385 (presented at CVPR 2016). [https://arxiv.org/abs/1512.03385] [ResNet — skip connections enable training of very deep networks. One of the most-cited papers in ML.]
+- **Goodfellow, I., Bengio, Y. & Courville, A. (2016).** *Deep Learning.* MIT Press. Chapter 9. [https://www.deeplearningbook.org/]
+- **Bishop, C. (2006).** *Pattern Recognition and Machine Learning.* Springer. §14. [https://www.springer.com/book/9780387310732]
+
+### Further reading
 - LeCun et al. — *Gradient-Based Learning Applied to Document Recognition* (LeNet, 1998).
 - Krizhevsky et al. — *AlexNet* (2012). The paper that started deep learning.
 - Simonyan & Zisserman — *Very Deep CNNs* (VGG, 2014).
 - He et al. — *Deep Residual Learning* (ResNet, 2015). One of the most-cited papers in ML.
 - Liu et al. — *A ConvNet for the 2020s* (ConvNeXt, 2022).
 - Stanford CS231n notes — still the gold-standard pedagogical resource.
+
+## 8. Advanced
+
+- **Convolution is equivariant to translation**: if you shift the input, the feature map shifts by the same amount. This is the property that makes CNNs work for vision — the network 'knows' that a feature is the same regardless of where it appears.
+- **The receptive field grows with depth**: a unit in layer l sees a region of the input that grows with each preceding layer. For a stack of 3x3 convs, the receptive field after L layers is 2L+1 (for stride 1). This is why deep CNNs can capture large-scale structure.
+- **1x1 convolutions**: a 1x1 conv is a per-pixel linear combination across channels. It's used for dimensionality reduction (reducing the channel count before a 3x3 conv, as in ResNet bottleneck blocks) and for adding nonlinearity (a 1x1 conv + ReLU between conv layers, as in GoogLeNet's inception modules).
+- **Padding modes**: 'valid' (no padding, output shrinks), 'same' (zero-padding to preserve spatial dimensions), 'circular' / 'reflective' (for texture synthesis). Padding choice affects the border behavior of the network.
+- **Modern architectures as module variants**: ResNet adds skip connections (identity + residual), DenseNet connects each layer to all subsequent layers (feature reuse), EfficientNet scales depth/width/resolution together. All are built on the convolution primitives from this module.
+- **The convolution theorem**: convolution in the spatial domain = multiplication in the Fourier domain. This is why FFT-based convolution is faster for large kernels (though for the small kernels used in CNNs, direct convolution is faster).

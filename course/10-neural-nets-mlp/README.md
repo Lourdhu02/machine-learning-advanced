@@ -210,8 +210,24 @@ The gradient check is the single most useful debugging trick in this entire cour
 
 ## 7. References
 
-- Rumelhart, Hinton, Williams — *Learning representations by back-propagating errors* (1986). The original.
+### Papers
+- **Rosenblatt, F. (1958).** *The perceptron: a probabilistic model for information storage and organization in the brain.* Psychological Review, 65(6), 386–408. [https://doi.org/10.1037/h0042519] [The original perceptron paper — the birth of neural networks.]
+- **Rumelhart, D.E., Hinton, G.E. & Williams, R.J. (1986).** *Learning representations by back-propagating errors.* Nature, 323(6088), 533–536. [https://doi.org/10.1038/323533a0] [The backprop paper — popularized backpropagation for training multi-layer networks.]
+- **Goodfellow, I., Bengio, Y. & Courville, A. (2016).** *Deep Learning.* MIT Press. Chapter 6. [https://www.deeplearningbook.org/] [The modern comprehensive reference — the standard textbook.]
+- **Bishop, C. (2006).** *Pattern Recognition and Machine Learning.* Springer. §5. [https://www.springer.com/book/9780387310732]
+- **Hastie, T., Tibshirani, R. & Friedman, J. (2009).** *The Elements of Statistical Learning.* 2nd ed., Springer. §11. [https://hastie.su.domains/EoSL/]
+
+### Further reading
+- Rosenblatt, Hinton, Williams — *Learning representations by back-propagating errors* (1986). The original.
 - Nielsen — *Neural Networks and Deep Learning* (free book), Chapter 2. The best gentle backprop walk-through anywhere.
 - Karpathy — *Yes you should understand backprop* (Medium, 2016) and *Hacker's guide to Neural Networks* (the legendary post). Required reading.
 - Goodfellow, Bengio, Courville — *Deep Learning*, §6. Foundational.
 - 3Blue1Brown — *But what is a neural network?* (YouTube playlist). Watch episodes 1–4 alongside this module.
+
+## 8. Advanced
+
+- **Universal approximation theorem**: a feedforward network with one hidden layer and sufficient units can approximate any continuous function on a compact set to arbitrary precision (Cybenko 1989 for sigmoid; Hornik 1991 for general activation). This is an existence result — it says nothing about learnability or generalization.
+- **The loss landscape** of neural nets is non-convex with many local minima and saddle points. Saddle points (where the Hessian has both positive and negative eigenvalues) are more common than local minima in high dimensions. This is why momentum and Adam help — they escape saddle points faster.
+- **He initialization** (used in from_scratch.py): for ReLU, Var(W) = 2/n_in keeps the variance of activations constant across layers. This prevents vanishing/exploding activations in deep networks. For tanh, Xavier initialization (Var(W) = 1/n_in) is appropriate.
+- **The numerical gradient check** in from_scratch.py is essential: backprop bugs are subtle and common. The check confirms that the analytical gradient matches the finite-difference gradient to within 1e-5.
+- **Capacity and generalization**: the VC dimension of a ReLU network with W weights is O(W log W) — but in practice, neural nets can fit random labels (Zhang et al., 2017), which means classical capacity measures don't explain generalization. The implicit regularization of SGD and the structure of real data are active research areas.

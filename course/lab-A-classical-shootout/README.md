@@ -48,3 +48,20 @@ The lesson: *the model is a hypothesis about the geometry of the boundary*. Pick
 ## Why no neural net here?
 
 Neural nets enter in module 10. The fair comparison "linear vs kernel vs ensemble vs neural net" comes in Lab C on a larger problem (MNIST). On these tiny 2D problems an MLP would either over-fit or just rediscover one of the boundaries above.
+
+---
+
+## References
+
+### Papers
+- **Cox, D.R. (1958).** *The regression analysis of binary sequences.* Journal of the Royal Statistical Society: Series B, 20(2), 215–232. [https://doi.org/10.1111/j.2517-6161.1958.tb00290.x] [The original logistic regression paper.]
+- **Cortes, C. & Vapnik, V. (1995).** *Support-vector networks.* Machine Learning, 20(3), 273–297. [https://link.springer.com/article/10.1007/BF00994018] [The canonical SVM paper.]
+- **Boser, B., Guyon, I. & Vapnik, V. (1992).** *A training algorithm for optimal margin classifiers.* COLT 1992, 144–152. [The original max-margin classifier.]
+- **Breiman, L. (2001).** *Random forests.* Machine Learning, 45(1), 5–32. [https://doi.org/10.1023/A:1010950713441] [The Random Forest paper.]
+
+> Lab A builds on modules 02 (logistic regression), 04 (SVM), and 06 (ensembles). See those modules' READMEs for the full paper lists.
+
+## 8. Advanced
+
+- **No free lunch theorem** (Wolpert & Macready, 1997): averaged over all possible data distributions, every classifier has the same error rate. This means there is no universally best algorithm — the best choice depends on the structure of the specific problem. This is why the shootout matters.
+- **The comparison in this lab is on one dataset**; a fair comparison requires multiple datasets or a nested cross-validation to avoid overfitting to the dataset choice.

@@ -206,8 +206,24 @@ python from_scratch.py
 
 ## 7. References
 
+### Papers
+- **Lloyd, S.P. (1982).** *Least squares quantization in PCM.* IEEE Transactions on Information Theory, 28(2), 129–137. [https://doi.org/10.1109/TIT.1982.1058396] [The k-means paper (often retroactively attributed to a 1957 technical report).]
+- **Arthur, D. & Vassilvitskii, S. (2007).** *k-means++: the advantages of careful seeding.* Proceedings of SODA 2007, 1027–1035. [https://dl.acm.org/doi/10.5555/1283383.1283494] [k-means++ initialization.]
+- **Dempster, A.P., Laird, N.M. & Rubin, D.B. (1977).** *Maximum likelihood from incomplete data via the EM algorithm.* Journal of the Royal Statistical Society: Series B (Methodological), 39(1), 1–38. [https://doi.org/10.1111/j.2517-6161.1977.tb01600.x] [The original EM algorithm paper — required reading once in a lifetime.]
+- **Bishop, C. (2006).** *Pattern Recognition and Machine Learning.* Springer. §9. [https://www.springer.com/book/9780387310732]
+- **Hastie, T., Tibshirani, R. & Friedman, J. (2009).** *The Elements of Statistical Learning.* 2nd ed., Springer. §14.3. [https://hastie.su.domains/EoSL/]
+
+### Further reading
 - Lloyd — *Least Squares Quantization in PCM* (1957). The k-means paper, retroactively.
 - Arthur & Vassilvitskii — *k-means++: The Advantages of Careful Seeding* (2007).
 - Dempster, Laird, Rubin — *Maximum Likelihood from Incomplete Data via the EM Algorithm* (1977). The original EM paper. Required reading once in a lifetime.
 - Bishop — *PRML* §9. The cleanest modern treatment of GMM + EM.
 - Andrew Ng — CS229 Notes 7a/7b (mixture models, EM).
+
+## 8. Advanced
+
+- **k-means++ initialization**: the standard k-means initialization is random, which can give poor results. k-means++ (Arthur & Vassilvitskii, 2007) samples the first centroid uniformly, then subsequent centroids with probability proportional to squared distance from existing centroids. This gives an O(log k) approximation guarantee.
+- **The k-means objective is non-convex**; k-means is a special case of EM for a GMM with spherical covariances and equal mixing weights. The 'hard' assignment (each point to exactly one cluster) is the limiting case of the 'soft' GMM assignment as the covariance → 0.
+- **GMM identifiability**: a GMM is identifiable (up to label permutation) iff the component means are distinct and the covariance matrices are non-degenerate. This matters for interpreting the EM fit.
+- **Model selection for clustering**: the elbow method (looking for a knee in the within-cluster SS plot) is heuristic. Better: silhouette score, gap statistic (Tibshirani et al. 2001), or BIC/AIC for GMMs.
+- **Spectral clustering**: construct a similarity graph, compute the Laplacian, cluster the eigenvectors. This can find non-convex clusters that k-means cannot, at the cost of an eigenvalue decomposition.

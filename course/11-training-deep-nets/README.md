@@ -209,6 +209,17 @@ python from_scratch.py
 
 ## 7. References
 
+### Papers
+- **Robbins, H. & Monro, S. (1951).** *A stochastic approximation method.* Annals of Mathematical Statistics, 22(3), 400–407. [https://doi.org/10.1214/aoms/1177729586] [The stochastic approximation paper — the origin of SGD.]
+- **Nesterov, Y. (1983).** *A method for solving the convex programming problem with convergence rate O(1/k²).* Doklady Akademii Nauk SSSR, 269(2), 543–547. [The momentum method paper — Nesterov accelerated gradient.]
+- **Kingma, D.P. & Ba, J. (2015).** *Adam: a method for stochastic optimization.* Proceedings of ICLR 2015. [https://arxiv.org/abs/1412.6980] [The Adam paper — the default optimizer for most deep learning.]
+- **Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I. & Salakhutdinov, R. (2014).** *Dropout: a simple way to prevent neural networks from overfitting.* Journal of Machine Learning Research, 15(1), 1929–1958. [http://jmlr.org/papers/v15/srivastava14a.html] [The Dropout paper.]
+- **Ioffe, S. & Szegedy, C. (2015).** *Batch normalization: accelerating deep network training by reducing internal covariate shift.* Proceedings of ICML 2015. [https://proceedings.mlr.press/v37/ioffe15.html] [The BatchNorm paper.]
+- **Loshchilov, I. & Hutter, F. (2017).** *Decoupled weight decay regularization.* arXiv:1711.05101. [https://arxiv.org/abs/1711.05101] [The AdamW paper — decoupled weight decay.]
+- **Goodfellow, I., Bengio, Y. & Courville, A. (2016).** *Deep Learning.* MIT Press. Chapter 8. [https://www.deeplearningbook.org/]
+- **Bishop, C. (2006).** *Pattern Recognition and Machine Learning.* Springer. §5. [https://www.springer.com/book/9780387310732]
+
+### Further reading
 - Kingma & Ba — *Adam: A Method for Stochastic Optimization* (2014).
 - Loshchilov & Hutter — *Decoupled Weight Decay Regularization* (2017). The AdamW paper.
 - Srivastava et al. — *Dropout* (2014). The original.
@@ -216,3 +227,12 @@ python from_scratch.py
 - Santurkar, Tsipras, Ilyas, Madry — *How Does Batch Normalization Help Optimization?* (2018). The "covariate shift" debunk.
 - Ba, Kiros, Hinton — *Layer Normalization* (2016).
 - Wilson et al. — *The Marginal Value of Adaptive Gradient Methods in Machine Learning* (2017). Argues SGD generalizes better than Adam in some regimes.
+
+## 8. Advanced
+
+- **SGD's convergence**: for convex, L-smooth, μ-strongly convex objectives, SGD with η_t = O(1/t) converges at O(1/t). For non-convex (neural nets), SGD converges to a stationary point (gradient ≈ 0) under similar conditions, but not necessarily a global minimum.
+- **Momentum as a discretization of a damped ODE**: the momentum update v_{t+1} = μ v_t - η ∇L corresponds to a second-order ODE; Nesterov momentum evaluates the gradient at the lookahead position, giving a better rate.
+- **Adam's bias correction**: the moving averages m_t and v_t are initialized at 0, biasing them toward zero in early steps. The correction m_t / (1-β₁ᵗ) and v_t / (1-β₂ᵗ) removes this bias. Without it, early steps have too-small effective step sizes.
+- **Dropout as Bayesian approximation**: Gal & Ghahramani (2016) showed that training with dropout and using Monte Carlo dropout at test time (multiple stochastic forward passes) approximates Bayesian neural nets, giving uncertainty estimates.
+- **BatchNorm's effect on the optimization landscape**: BatchNorm makes the optimization landscape smoother (less sensitive to weight rescaling), which is why it allows higher learning rates. It also has a slight regularizing effect from the minibatch statistics.
+- **Learning rate schedules**: step decay, cosine annealing (Loshchilov & Hutter, 2016), and cyclic learning rates (Smith, 2015) all outperform a constant learning rate. The 1cycle policy (one cycle of increasing then decreasing LR) is popular for fast training.

@@ -233,8 +233,26 @@ python from_scratch.py
 
 ## 7. References
 
+### Papers
+- **Cortes, C. & Vapnik, V. (1995).** *Support-vector networks.* Machine Learning, 20(3), 273–297. [https://link.springer.com/article/10.1007/BF00994018] [The canonical SVM paper.]
+- **Boser, B., Guyon, I. & Vapnik, V. (1992).** *A training algorithm for optimal margin classifiers.* Proceedings of the 5th Annual Workshop on Computational Learning Theory (COLT 1992), 144–152. [The original max-margin classifier algorithm.]
+- **Vapnik, V. (1995).** *The Nature of Statistical Learning Theory.* 1st ed., Springer. [https://link.springer.com/book/10.1007/978-1-4471-3218-4] [The theoretical foundation of SVMs.]
+- **Schölkopf, B. & Smola, A.J. (2002).** *Learning with Kernels: Support Vector Machines, Regularization, Optimization, and Beyond.* MIT Press. [https://mitpress.mit.edu/books/learning-kernels] [The comprehensive kernel methods reference.]
+- **Bishop, C. (2006).** *Pattern Recognition and Machine Learning.* Springer. §7. [https://www.springer.com/book/9780387310732]
+- **Hastie, T., Tibshirani, R. & Friedman, J. (2009).** *The Elements of Statistical Learning.* 2nd ed., Springer. §4.5. [https://hastie.su.domains/EoSL/]
+
+### Further reading
 - Burges — *A Tutorial on Support Vector Machines for Pattern Recognition* (1998). Still the gold-standard pedagogical paper.
 - Bishop — *PRML*, §7.1. Cleanest treatment of the dual derivation.
 - Andrew Ng — CS229 Notes 3 (SVM). Pairs well with Bishop.
 - Platt — *Sequential Minimal Optimization* (1998). The original SMO paper.
 - Shalev-Shwartz et al. — *Pegasos: Primal Estimated sub-GrAdient SOlver for SVM* (2007). The primal-subgradient approach we use in `LinearSVM`.
+
+## 8. Advanced
+
+- **The dual's key insight**: the optimal w is a linear combination of the training points, w = Σα_i y_i x_i. Only points with α_i > 0 (support vectors) matter — this is what makes SVMs memory-efficient at inference and what enables the kernel trick.
+- **Kernel trick**: K(x, x') = φ(x)ᵀφ(x') can be computed without ever computing φ(x). The RBF kernel K(x, x') = exp(-γ||x-x'||²) corresponds to an infinite-dimensional φ.
+- **Mercer's theorem**: a function K is a valid kernel iff the kernel matrix [K(x_i, x_j)] is positive semidefinite for any set of points. This is the theoretical guarantee that the dual is convex.
+- **ν-SVM vs C-SVM**: the C parameter in C-SVM controls the tradeoff between margin width and hinge-loss errors. ν-SVM (Schölkopf et al.) uses a ν parameter that directly controls the fraction of support vectors and margin errors — more interpretable.
+- **Soft margin**: ξ_i ≥ 0 are slack variables; the constraint y_i(wᵀx_i + b) ≥ 1 - ξ_i allows points to be on the wrong side of the margin. C controls the penalty on ξ.
+- **One-class SVM**: for anomaly detection, the SVDD formulation finds the smallest sphere enclosing the data in feature space; points outside are anomalies.

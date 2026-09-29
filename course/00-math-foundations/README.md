@@ -97,7 +97,21 @@ Run it. If both checks print `OK`, your environment is healthy and you have the 
 
 ## 7. References
 
+### Papers
+- **Strang, G. (2006).** *Linear Algebra and Its Applications.* 4th ed., Cengage.
+- **Bishop, C. (2006).** *Pattern Recognition and Machine Learning.* Springer. Ch. 2–3.
+- **Deisenroth, M., Faisal, A. & Ong, C. (2020).** *Mathematics for Machine Learning.* Cambridge University Press. [https://mml-book.github.io/]
+
+### Further reading
 - 3Blue1Brown — *Essence of Linear Algebra* (YouTube playlist). Best visual intro to vectors, matrices, eigenvectors.
-- 3Blue1Brown — *Essence of Calculus*.
+- 3Blue1Brown — *Essence of Calculus* (YouTube playlist).
 - Strang — *Linear Algebra and Its Applications* (book). Reference, not bedtime reading.
-- Deisenroth, Faisal, Ong — *Mathematics for Machine Learning*. Free PDF: https://mml-book.github.io/
+
+> This module is a primer. No single research paper anchors it — the math here is older than the academic paper format. Use it as setup for everything that follows.
+
+## 8. Advanced
+
+- **Spectral theorem**: for real symmetric A, A = QΛQᵀ; the eigendecomposition in section 2 is the special case. In ML, this is what lets PCA diagonalize the covariance.
+- **Condition number** κ(A) = σ_max/σ_min. When κ is large, (XᵀX)⁻¹ in the normal equation amplifies noise — this is why Ridge helps (section 3).
+- **Matrix calculus convention**: numerator layout vs denominator layout. This course uses denominator layout (∇_w L has same shape as w). The gradient check in from_scratch.py confirms which convention was used.
+- **Chain rule for vector functions**: if y = f(g(x)), ∂y/∂x = (∂y/∂g)(∂g/∂x) — the backbone of backprop (module 10).

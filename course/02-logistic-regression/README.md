@@ -175,7 +175,22 @@ Implementation notes you'll see in the code:
 
 ## 7. References
 
+### Papers
+- **Cox, D.R. (1958).** *The regression analysis of binary sequences.* Journal of the Royal Statistical Society: Series B (Methodological), 20(2), 215–232. [https://doi.org/10.1111/j.2517-6161.1958.tb00290.x] [The original logistic regression paper.]
+- **Nelder, J.A. & Wedderburn, R.W.M. (1972).** *Generalized linear models.* Journal of the Royal Statistical Society: Series A (General), 135(3), 370–384. [https://doi.org/10.2307/2344614] [The GLM framework that subsumes logistic regression.]
+- **Bishop, C. (2006).** *Pattern Recognition and Machine Learning.* Springer. §4.3. [https://www.springer.com/book/9780387310732]
+- **Hastie, T., Tibshirani, R. & Friedman, J. (2009).** *The Elements of Statistical Learning.* 2nd ed., Springer. §4.4. [https://hastie.su.domains/EoSL/]
+
+### Further reading
 - Bishop — *Pattern Recognition and Machine Learning*, §4.3.
 - Andrew Ng — CS229 Notes 1, §5–6 (the cleanest written derivation of logistic regression and the cross-entropy gradient anywhere).
 - Hastie, Tibshirani, Friedman — *Elements of Statistical Learning*, §4.4.
 - StatQuest — *Logistic Regression, Clearly Explained* (YouTube).
+
+## 8. Advanced
+
+- **Logistic regression is a GLM** with Bernoulli family and logit link. The IRLS algorithm (Newton's method for GLMs) is what statsmodels uses.
+- **The decision boundary** p=0.5 is linear in x, but the log-odds log(p/(1-p)) = wᵀx + b is exactly linear — this is why logistic regression is a linear classifier in log-odds space, not in probability space.
+- **Multi-class**: softmax regression (multinomial logistic regression) generalizes binary logistic regression. The gradient is the same (prob - target) form, now with K output classes.
+- **Regularization in logistic regression**: L2 shrinks weights, which is equivalent to a Gaussian prior on w (MAP). L1 gives sparse weights.
+- **Calibration**: logistic regression outputs are often well-calibrated (the predicted p matches the empirical frequency). This is not true of SVMs or uncalibrated neural nets — Platt scaling or isotonic regression can fix this.

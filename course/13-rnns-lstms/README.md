@@ -186,8 +186,25 @@ python from_scratch.py
 
 ## 7. References
 
+### Papers
+- **Elman, J.L. (1990).** *Finding structure in time.* Cognitive Science, 14(2), 179–211. [https://doi.org/10.1207/s15516709cog1402_1] [The vanilla RNN paper — introduced simple recurrent networks for sequence modeling.]
+- **Hochreiter, S. & Schmidhuber, J. (1997).** *Long short-term memory.* Neural Computation, 9(8), 1735–1780. [https://doi.org/10.1162/neco.1997.9.8.1735] [The LSTM paper — the additive cell-state architecture that solves vanishing gradients. Cite this directly.]
+- **Bengio, Y., Simard, P. & Frasconi, P. (1994).** *Learning long-term dependencies with gradient descent is difficult.* IEEE Transactions on Neural Networks, 5(2), 157–166. [https://doi.org/10.1109/72.279181] [Formalized the vanishing gradient problem in RNNs.]
+- **Goodfellow, I., Bengio, Y. & Courville, A. (2016).** *Deep Learning.* MIT Press. Chapter 10. [https://www.deeplearningbook.org/]
+- **Graves, A. (2012).** *Supervised sequence labelling with recurrent neural networks.* Springer. [https://link.springer.com/book/10.1007/978-3-642-24797-2] [Comprehensive treatment of RNN-based sequence labeling, including LSTMs.]
+
+### Further reading
 - Hochreiter & Schmidhuber — *Long Short-Term Memory* (1997). The original. Famously hard to read; use Olah's blog as a primary instead.
 - Olah — *Understanding LSTM Networks* (2015). The standard pedagogical explainer; required reading.
 - Cho et al. — *Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation* (2014). The GRU paper.
 - Karpathy — *The Unreasonable Effectiveness of Recurrent Neural Networks* (2015). The blog post that made char-RNNs viral.
 - Pascanu et al. — *On the difficulty of training recurrent neural networks* (2013). The paper that formalized exploding / vanishing gradients.
+
+## 8. Advanced
+
+- **Why BPTT**: the RNN is a computational graph unrolled in time; the gradient w.r.t. parameters is the sum over time steps of the gradient at each step. This is BPTT. The vanishing/exploding gradient problem comes from the chain rule multiplying Jacobians repeatedly.
+- **The vanishing gradient proof** (Bengio et al. 1994): if the Jacobian ∂h_t/∂h_{t-1} has spectral radius < 1, the gradient decays exponentially with the time lag. For tanh RNNs, this is almost always the case. This is why plain RNNs cannot learn long-range dependencies.
+- **LSTM's design**: the cell state c_t is a 'highway' that flows through time with only pointwise multiplication by the forget gate f_t and addition of the input. The gradient flows through c_t largely unimpeded (the f_t gate can keep it near 1), which is why LSTMs can learn long dependencies.
+- **GRU vs LSTM**: the GRU merges the cell state and hidden state and uses two gates (reset and update) instead of three (input, forget, output). In practice, GRUs are often as good as LSTMs with fewer parameters, but the LSTM's separate cell state gives it more flexibility.
+- **Bidirectional RNNs**: using both past and future context (two RNNs, one forward, one backward, concatenated). This is common in NLP when the full sequence is available at training and test time (e.g., POS tagging). Not applicable when doing autoregressive generation.
+- **Sequence-to-sequence and attention**: the encoder-decoder RNN (Sutskever et al. 2014) is the precursor to the Transformer. Attention (module 14) solved the bottleneck problem of the fixed-length encoder state.

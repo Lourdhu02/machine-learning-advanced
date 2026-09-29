@@ -173,7 +173,23 @@ python from_scratch.py
 
 ## 7. References
 
+### Papers
+- **Hoerl, A.E. & Kennard, R.W. (1970).** *Ridge regression: biased estimation for nonorthogonal problems.* Technometrics, 12(1), 55–67. [https://doi.org/10.1080/00401706.1970.10488634] [The Ridge regression paper — the origin of L2 regularization.]
+- **Tibshirani, R. (1996).** *Regression shrinkage and selection via the lasso.* Journal of the Royal Statistical Society: Series B (Methodological), 58(1), 267–288. [https://doi.org/10.1111/j.2517-6161.1996.tb02080.x] [The Lasso paper — origin of L1 regularization and sparsity.]
+- **Zou, H. & Hastie, T. (2005).** *Regularization and variable selection via the elastic net.* Journal of the Royal Statistical Society: Series B (Statistical Methodology), 67(2), 301–320. [https://doi.org/10.1111/j.1467-9868.2005.00503.x] [The ElasticNet paper.]
+- **Bishop, C. (2006).** *Pattern Recognition and Machine Learning.* Springer. §3.3. [https://www.springer.com/book/9780387310732]
+- **Hastie, T., Tibshirani, R. & Friedman, J. (2009).** *The Elements of Statistical Learning.* 2nd ed., Springer. §3.4. [https://hastie.su.domains/EoSL/]
+
+### Further reading
 - Tibshirani — *Regression Shrinkage and Selection via the Lasso* (1996). The original Lasso paper. Short and readable.
 - Friedman, Hastie, Tibshirani — *Regularization Paths for Generalized Linear Models via Coordinate Descent* (2010). The paper behind `glmnet`. Cleanest coordinate-descent derivation.
 - ESL §3.4 — geometric picture of Ridge vs Lasso.
 - Zou & Hastie — *Regularization and Variable Selection via the Elastic Net* (2005).
+
+## 8. Advanced
+
+- **The L1 penalty's sparsity** comes from the non-differentiable kink at 0: the subgradient includes 0, so the optimum can land exactly at w_j = 0. L2's smooth gradient never pushes a coefficient exactly to zero.
+- **Ridge is rotationally invariant**: if you rotate the features by an orthogonal matrix, the Ridge solution rotates correspondingly. Lasso is not — it depends on the feature basis. This is why the choice of basis matters for Lasso.
+- **ElasticNet's grouping effect**: tends to select groups of correlated variables together, unlike Lasso which tends to pick one and drop the rest.
+- **Degrees of freedom of Ridge**: df(λ) = tr(X(XᵀX + λI)⁻¹Xᵀ). This is used in generalized cross-validation (GCV), which avoids explicit CV splits.
+- **Bridge regression**: penalty ||w||_q^q for q > 0. L2 is q=2, L1 is q=1. L0 (best subset) is NP-hard. This unifies the penalty family.

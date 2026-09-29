@@ -190,8 +190,27 @@ python from_scratch.py
 
 ## 7. References
 
+### Papers
+- **Pearson, K. (1901).** *On lines and planes of closest fit to systems of points in space.* Philosophical Magazine, 2(11), 559–572. [The original PCA paper — first appearance of principal component analysis.]
+- **Hotelling, H. (1933).** *Analysis of a complex of statistical variables into principal components.* Journal of Educational Psychology, 24(6), 417–441. [https://doi.org/10.1037/h0070888] [The modern formulation of PCA — the canonical reference.]
+- **Golub, G.H. & Reinsch, C. (1970).** *Singular value decomposition and least squares solutions.* Numerische Mathematik, 14(5), 403–420. [https://doi.org/10.1007/BF02163073] [The standard SVD algorithm — the computational backbone of PCA.]
+- **van der Maaten, L. & Hinton, G. (2008).** *Visualizing data using t-SNE.* Journal of Machine Learning Research, 9, 2579–2605. [http://www.jmlr.org/papers/v9/vandermaaten08a.html] [The t-SNE paper. Short, readable.]
+- **McInnes, L., Healy, J. & Melville, J. (2018).** *UMAP: uniform manifold approximation and projection for dimension reduction.* arXiv:1802.03426. [https://arxiv.org/abs/1802.03426] [The UMAP paper.]
+- **Bishop, C. (2006).** *Pattern Recognition and Machine Learning.* Springer. §12. [https://www.springer.com/book/9780387310732]
+- **Hastie, T., Tibshirani, R. & Friedman, J. (2009).** *The Elements of Statistical Learning.* 2nd ed., Springer. §14. [https://hastie.su.domains/EoSL/]
+
+### Further reading
 - Pearson — *On Lines and Planes of Closest Fit to Systems of Points in Space* (1901). The original PCA paper.
 - ESL §14.5 (PCA derivation), §14.8 (non-linear DR).
 - van der Maaten & Hinton — *Visualizing Data using t-SNE* (2008). The t-SNE paper. Short, readable.
 - McInnes, Healy, Melville — *UMAP* (2018).
 - Wattenberg, Viégas, Johnson — *How to Use t-SNE Effectively* (2016, Distill.pub). Required reading before you trust any t-SNE plot you didn't make yourself.
+
+## 8. Advanced
+
+- **PCA's variance-maximization and reconstruction-error-minimization formulations are equivalent**: the k-th principal component maximizes variance subject to being orthogonal to the first k-1, AND minimizes the reconstruction error. This duality is useful for understanding what PCA does.
+- **PCA is sensitive to scaling**: if features are on different scales, the large-scale features dominate the variance. Standardization (zero mean, unit variance) is essential before PCA unless the scale is meaningful.
+- **Probabilistic PCA (Tipping & Bishop, 1999)**: a latent variable model where x = Wz + μ + ε, z ~ N(0,I), ε ~ N(0, σ²I). The maximum likelihood W is the same as PCA up to a rotation; the EM algorithm gives a principled way to handle missing data.
+- **t-SNE's KL divergence objective**: t-SNE minimizes KL(P || Q) where P is the distribution of pairwise similarities in high-D (Gaussian kernel, perplexity-controlled bandwidth) and Q is the distribution in low-D (Student-t kernel). The heavy tails of the t-distribution prevent the 'crowding problem' of SNE.
+- **UMAP's topological motivation**: UMAP constructs a fuzzy simplicial set (a topological representation) of the high-D data and a similar set in low-D, then minimizes the cross-entropy between them. The Riemannian metric and the locally connected manifold assumption are the theoretical basis.
+- **PCA vs t-SNE vs UMAP use cases**: PCA for linear structure, variance explanation, and preprocessing; t-SNE for visualization of local structure (clusters); UMAP for visualization AND for preserving some global structure, often faster than t-SNE on large data.

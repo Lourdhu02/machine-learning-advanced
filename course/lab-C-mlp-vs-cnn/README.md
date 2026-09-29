@@ -51,3 +51,21 @@ The CNN's inductive bias buys you an order of magnitude in parameter efficiency.
 CNNs don't beat MLPs by having "more capacity". They beat MLPs by having *less* capacity directed at the *right* structure. That's what an inductive bias does — it constrains the hypothesis space to the part you care about, so gradient descent finds a good solution faster and with less data.
 
 This is the same lesson that explains why graph neural networks beat MLPs on molecules, why transformers beat MLPs on sequences, and why every modern deep architecture is "MLP + the specific constraint that matches the data".
+
+---
+
+## References
+
+### Papers
+- **Hubel, D.H. & Wiesel, T.N. (1962).** *Receptive fields, binocular interaction, and functional architecture in the cat's visual cortex.* Journal of Physiology, 160(1), 106–154. [https://doi.org/10.1113/jphysiol.1962.sp006837] [The neuroscience paper that inspired CNNs.]
+- **LeCun, Y., Bottou, L., Bengio, Y. & Haffner, P. (1998).** *Gradient-based learning applied to document recognition.* Proceedings of the IEEE, 86(11), 2278–2324. [https://doi.org/10.1109/5.726791] [LeNet-5 — the first CNN.]
+- **Krizhevsky, A., Sutskever, I. & Hinton, G.E. (2012).** *ImageNet classification with deep convolutional neural networks.* NIPS 2012. [https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c843688beede52a3-Paper.pdf] [AlexNet — the deep learning revolution in vision.]
+- **Goodfellow, I., Bengio, Y. & Courville, A. (2016).** *Deep Learning.* MIT Press. Chapter 9. [https://www.deeplearningbook.org/]
+
+> Lab C builds on module 12 (CNNs). See that module's README for the full paper list.
+
+## 8. Advanced
+
+- **CNNs' inductive bias for vision**: translation equivariance + locality (receptive fields) means CNNs need fewer parameters and less data to learn vision tasks than MLPs. This is the central reason CNNs dominate vision.
+- **MLPs on images**: an MLP treats the image as a flat vector, ignoring spatial structure. It can learn vision tasks (and does, given enough data and parameters), but it's less sample-efficient and less parameter-efficient than a CNN for the same task.
+- **The compute budget comparison in this lab is important**: with the same number of parameters and epochs, the CNN should outperform the MLP on vision tasks because of the inductive bias. If it doesn't, the CNN implementation may have a bug.

@@ -180,7 +180,24 @@ python from_scratch.py
 
 ## 7. References
 
+### Papers
+- **Bayes, T. (1763).** *An essay towards solving a problem in the doctrine of chances.* Philosophical Transactions of the Royal Society of London, 53, 370–418. [Posthumous, communicated by Richard Price.] [The origin of Bayes' theorem — the foundation of all Bayesian inference.]
+- **Fix, E. & Hodges, J.L. (1951).** *Significance testing for the discriminating between two maxima.* (Unpublished manuscript, Princeton University.) [The earliest appearance of the k-nearest-neighbour idea.]
+- **Cover, T. & Hart, P. (1967).** *Nearest neighbor pattern classification.* IEEE Transactions on Information Theory, 13(1), 21–27. [https://doi.org/10.1109/TIT.1967.1053964] [Proved kNN's convergence properties — k=1 achieves ~twice Bayes error, asymptotically.]
+- **Dempster, A.P., Laird, N.M. & Rubin, D.B. (1977).** *Maximum likelihood from incomplete data via the EM algorithm.* Journal of the Royal Statistical Society: Series B (Methodological), 39(1), 1–38. [https://doi.org/10.1111/j.2517-6161.1977.tb01600.x] [The EM algorithm paper — powers GMM, HMMs, and the entire latent-variable family.]
+- **Bishop, C. (2006).** *Pattern Recognition and Machine Learning.* Springer. §1.2 (Bayes), §2.1 (probability), §4.2.4 (NB), §9 (GMM/EM). [https://www.springer.com/book/9780387310732]
+- **Hastie, T., Tibshirani, R. & Friedman, J. (2009).** *The Elements of Statistical Learning.* 2nd ed., Springer. §1 (intro), §13 (unsupervised + kNN). [https://hastie.su.domains/EoSL/]
+
+### Further reading
 - Bishop — *PRML* §4.2.4 (Gaussian NB), §3.3 (kNN-style nonparametric methods).
 - Hastie, Tibshirani, Friedman — ESL §13.3.
 - Domingos & Pazzani — *On the Optimality of the Simple Bayesian Classifier under Zero-One Loss* (1997). Explains *why* NB works so often despite the independence lie.
 - Beyer et al. — *When Is "Nearest Neighbor" Meaningful?* (1999). The classic paper on the curse of dimensionality for kNN.
+
+## 8. Advanced
+
+- **Naive Bayes' 'naive' independence assumption** is almost always false, yet Naive Bayes often works well because classification only requires the correct argmax, not correct probabilities. The independence assumption cancels out in the argmax if the dependencies are symmetric across classes.
+- **The curse of dimensionality for kNN**: in high dimensions, the volume of a hypersphere concentrates near its surface; all points become approximately equidistant. kNN's distance-based reasoning degrades. This is why kNN needs low-dimensional or well-engineered features.
+- **kNN as a kernel method**: kNN can be written as a Nadaraya-Watson kernel regression with a uniform kernel of bandwidth = distance to the k-th neighbor. This connects kNN to the kernel smoothing literature.
+- **Bayesian model averaging**: rather than picking the best model, average over models weighted by their posterior probability. This is the theoretically optimal way to handle model uncertainty — and it's what ensembles approximate empirically.
+- **The EM algorithm (module 08) is a special case of majorization-minimization (MM)**: the E-step constructs a lower bound (minorant) on the log-likelihood, the M-step maximizes it. Each iteration increases the log-likelihood — this is the convergence guarantee.

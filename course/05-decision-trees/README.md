@@ -181,7 +181,23 @@ The first two failure modes are exactly what motivates **ensembles** in module 0
 
 ## 7. References
 
+### Papers
+- **Quinlan, J.R. (1986).** *Induction of decision trees.* Machine Learning, 1(1), 81–106. [https://doi.org/10.1007/BF00116251] [The ID3 paper — the origin of decision tree induction.]
+- **Quinlan, J.R. (1993).** *C4.5: Programs for Machine Learning.* Morgan Kaufmann. [https://www.elsevier.com/books/c45/quinlan/978-1-4831-9506-4] [The C4.5 book — entropy-based splits, info-gain ratio.]
+- **Breiman, L., Friedman, J., Olshen, R. & Stone, C. (1984).** *Classification and Regression Trees.* CRC Press. [The CART book — Gini impurity, the standard modern reference.]
+- **Bishop, C. (2006).** *Pattern Recognition and Machine Learning.* Springer. §1.4. [https://www.springer.com/book/9780387310732]
+- **Hastie, T., Tibshirani, R. & Friedman, J. (2009).** *The Elements of Statistical Learning.* 2nd ed., Springer. §9.2. [https://hastie.su.domains/EoSL/]
+
+### Further reading
 - Breiman, Friedman, Olshen, Stone — *Classification and Regression Trees* (1984). The CART book. The original.
 - Quinlan — *C4.5: Programs for Machine Learning* (1993). The other classic (uses entropy/info-gain ratio).
 - ESL §9.2.
 - StatQuest — *Decision Trees, Clearly Explained* (YouTube). Excellent visual intro.
+
+## 8. Advanced
+
+- **CART uses Gini**; ID3/C4.5 use entropy/information gain. They give similar splits in practice. Information gain is biased toward features with many values — C4.5's gain ratio corrects for this.
+- **Pruning**: pre-pruning (stop splitting when gain < threshold, min samples per leaf) vs post-pruning (grow full tree, then prune back using cost-complexity pruning with the complexity parameter α). Cost-complexity pruning: minimize R_α(T) = R(T) + α|T|; the optimal α is found by weakest-link pruning.
+- **Trees are high-variance, low-bias estimators**: a small change in the training data can produce a very different tree. This is exactly why ensembles (module 06) work — bagging reduces variance.
+- **The greedy split is not globally optimal**: finding the optimal binary tree is NP-hard. The greedy heuristic is what makes trees tractable.
+- **Decision boundaries are axis-aligned rectangles** (one per leaf). This is both a strength (interpretable) and a weakness (struggles with diagonal boundaries — which is why you need many splits or an ensemble).
