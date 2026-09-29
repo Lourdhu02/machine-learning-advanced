@@ -13,6 +13,30 @@ This is the theory counterpart to my [gen-ai](https://github.com/Lourdhu02/gen-a
 
 ---
 
+## What you'll know by the end
+
+- Derive closed-form and iterative solutions for the core supervised algorithms (OLS, logistic regression, SVM) from first principles.
+- Read a paper's math section without skipping — you can follow the derivations.
+- Explain any algorithm on a whiteboard: what it optimizes, why the geometry looks the way it does, and where it breaks.
+- Build neural nets, CNNs, RNNs, attention, and Transformer blocks in NumPy — and know exactly what each line does.
+- Diagnose training problems (vanishing gradients, overfitting, bad optimizers) from the shapes you've seen in the diagrams.
+
+---
+
+## Who this is for
+
+- You know Python and have done a gradient descent assignment before.
+- You want to *understand*, not just call `.fit()`.
+- You're preparing for interviews, research, or a deeper dive into deep learning.
+
+## Who this is not for
+
+- Absolute beginners to Python or linear algebra — start with a general intro course first.
+- People who want a cookiecutter tutorial or a scikit-learn cheat sheet.
+- Anyone looking for a production deployment guide — this course stays in NumPy.
+
+---
+
 ## How this course works
 
 Every module follows the same seven-section layout:
@@ -26,6 +50,22 @@ Every module follows the same seven-section layout:
 7. **References** — canonical links only.
 
 No essays. Diagrams and equations carry the weight.
+
+---
+
+## How to use this course
+
+1. Finish [`SETUP.md`](./SETUP.md).
+2. Walk through [`course/00-math-foundations/README.md`](./course/00-math-foundations/) — the math primer.
+3. For each module:
+   - Read the **Intuition** and **Math** sections. Stop. Derive the key equation on paper yourself before looking at the solution.
+   - Run the **From scratch** code. Tweak a parameter. See what breaks.
+   - Study the **Diagram**. Make sure the plot matches the equation in your head.
+   - Read **When to use / when it breaks**. Close the module.
+4. Do the labs in order — they synthesize earlier modules.
+5. Move on only when you can explain the module's core idea without looking.
+
+Read. Derive. Plot. Code. Repeat.
 
 ---
 
@@ -56,16 +96,31 @@ No essays. Diagrams and equations carry the weight.
 
 ---
 
-## How to start
+## Selected diagrams
 
-1. Finish [`SETUP.md`](./SETUP.md).
-2. Open [`course/00-math-foundations/README.md`](./course/00-math-foundations/) and walk through the primer.
-3. Move to module 01.
+### Loss surface and gradient descent path
 
-Read. Derive. Plot. Code. Repeat.
+![MSE bowl with gradient descent path](./course/01-linear-regression/diagram_loss_surface.png)
 
-## Advanced ML
-Deep learning, NLP, CV — covered end-to-end by modules 7–15 and the four labs.
+The MSE loss as a quadratic bowl; the gradient descent trajectory from a random start to the optimum. Module 01.
+
+### SVM margin
+
+![SVM maximal margin separator](./course/04-svm/diagram_margin.png)
+
+The geometric margin, support vectors, and the optimal separating hyperplane. Module 04.
+
+### MLP training and capacity
+
+![MLP training curves — loss and accuracy over epochs](./course/10-neural-nets-mlp/diagram_training_curves.png)
+
+Training vs validation loss and accuracy for a small MLP on a non-linear problem. Module 10.
+
+### Attention weights
+
+![Attention weight heatmap](./course/14-attention/diagram_attention_heatmap.png)
+
+The attention matrix over a sequence — which tokens attend to which. Module 14.
 
 ---
 
